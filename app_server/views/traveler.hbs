@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="background">
+    <div id="page">
+      {{> header}}
+      <div id="contents">
+        <div id="adbox">
+          <img src="/images/sea-sound.jpg" alt="Ocean view">
+          <h1>Enjoy the Summer with Us!</h1>
+          <p>Discover memorable destinations, comfortable rooms, and delicious meals with Travlr Getaways.</p>
+        </div>
+        <div id="main">
+          <div class="box">
+            <div><div>
+              <h3>Latest Blog</h3>
+              <ul>
+                {{#each posts}}
+                <li>
+                  <h4><a href="/news.html">{{title}}</a></h4>
+                  <span>{{date}}</span>
+                  {{#if summary}}<p>{{summary}}</p>{{/if}}
+                </li>
+                {{/each}}
+              </ul>
+            </div></div>
+          </div>
+          <div id="testimonials" class="box">
+            <div><div>
+              <h3>Testimonials</h3>
+              <p>“In hac habitasse platea dictumst. Integer purus justo, egestas eu consectetur eu, cursus in tortor.” <span>- <a href="/">Juan De La Cruz</a></span></p>
+            </div></div>
+          </div>
+        </div>
+        <div id="sidebar">
+          <div class="section"><a href="/rooms.html"><img src="/images/rooms.png" alt="Rooms"></a></div>
+          <div class="section"><a href="/travel"><img src="/images/dive-site.png" alt="Dive site"></a></div>
+          <div class="section"><a href="/meals.html"><img src="/images/food.png" alt="Meals"></a></div>
+        </div>
+      </div>
+    </div>
+    {{> footer}}
+  </div>
+</body>
+</html>
