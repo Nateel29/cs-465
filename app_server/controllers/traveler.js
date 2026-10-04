@@ -1,10 +1,6 @@
-var fs = require('fs');
-var path = require('path');
+var Trip = require('../../app_api/models/trip');
 
-// Model: load trip data from JSON
-var trips = JSON.parse(
-  fs.readFileSync(path.join(__dirname, '..', 'data', 'trips.json'), 'utf8')
-);
+// Model: trips come from MongoDB via Mongoose
 
 // Shared navigation used by the header/footer partials
 function navigation(activeHref) {
@@ -41,12 +37,17 @@ var traveler = {
   },
 
   /* GET travel page */
-  travel: function(req, res) {
-    res.render('travel', {
-      title: 'Travel | Travlr Getaways',
-      navigation: navigation('/travel'),
-      trips: trips
-    });
+  travel: async function(req, res) {
+    try {
+      var trips = await Trip.find().lean().exec();
+      res.render('travel', {
+        title: 'Travel | Travlr Getaways',
+        navigation: navigation('/travel'),
+        trips: trips
+      });
+    } catch (err) {
+      res.status(500).render('error');
+    }
   }
 };
 

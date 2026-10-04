@@ -6,6 +6,11 @@ var logger = require('morgan');
 var exphbs = require('express-handlebars');
 
 var travelerRouter = require('./app_server/routes/traveler');
+var tripsApiRouter = require('./app_api/routes/trips');
+
+// Connect to MongoDB via Mongoose
+var db = require('./app_api/models/db');
+db.connect();
 
 var app = express();
 
@@ -24,7 +29,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Allow the Angular admin SPA (localhost:4200) to call the API
+app.use('/api', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  next();
+});
+
 app.use('/', travelerRouter);
+app.use('/api', tripsApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
