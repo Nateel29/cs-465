@@ -23,10 +23,24 @@ var tripsReadOne = async function (req, res) {
   }
 };
 
+// GET /api/trips/:tripCode - single trip by code using Mongoose FIND
+var tripsFindByCode = async function (req, res) {
+  try {
+    var trips = await Trip.find({ code: req.params.tripCode }).exec();
+    if (!trips || trips.length === 0) {
+      return res.status(404).json({ message: 'Trip not found' });
+    }
+    res.status(200).json(trips);
+  } catch (err) {
+    res.status(500).json({ message: 'Error retrieving trip', error: err.message });
+  }
+};
+
 // POST /api/trips - create a new trip
 var tripsCreate = async function (req, res) {
   try {
     var trip = await Trip.create({
+      code: req.body.code,
       name: req.body.name,
       image: req.body.image,
       alt: req.body.alt,
@@ -40,12 +54,13 @@ var tripsCreate = async function (req, res) {
   }
 };
 
-// PUT /api/trips/:tripId - update an existing trip
+// PUT /api/trips/:tripCode - update an existing trip
 var tripsUpdateOne = async function (req, res) {
   try {
-    var trip = await Trip.findByIdAndUpdate(
-      req.params.tripId,
+    var trip = await Trip.findOneAndUpdate(
+      { code: req.params.tripCode },
       {
+        code: req.body.code,
         name: req.body.name,
         image: req.body.image,
         alt: req.body.alt,
@@ -64,10 +79,10 @@ var tripsUpdateOne = async function (req, res) {
   }
 };
 
-// DELETE /api/trips/:tripId - remove a trip
+// DELETE /api/trips/:tripCode - remove a trip
 var tripsDeleteOne = async function (req, res) {
   try {
-    var trip = await Trip.findByIdAndDelete(req.params.tripId).exec();
+    var trip = await Trip.findOneAndDelete({ code: req.params.tripCode }).exec();
     if (!trip) {
       return res.status(404).json({ message: 'Trip not found' });
     }
@@ -80,6 +95,7 @@ var tripsDeleteOne = async function (req, res) {
 module.exports = {
   tripsList: tripsList,
   tripsReadOne: tripsReadOne,
+  tripsFindByCode: tripsFindByCode,
   tripsCreate: tripsCreate,
   tripsUpdateOne: tripsUpdateOne,
   tripsDeleteOne: tripsDeleteOne

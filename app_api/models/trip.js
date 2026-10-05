@@ -2,6 +2,13 @@ var mongoose = require('mongoose');
 
 // Trip schema with validation
 var tripSchema = new mongoose.Schema({
+  code: {
+    type: String,
+    required: [true, 'Trip code is required'],
+    unique: true,
+    trim: true,
+    uppercase: true
+  },
   name: {
     type: String,
     required: [true, 'Trip name is required'],

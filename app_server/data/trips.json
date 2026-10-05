@@ -1,5 +1,6 @@
 [
   {
+    "code": "GALR210214",
     "name": "Gale Reef",
     "image": "reef1.jpg",
     "alt": "Gale Reef",
@@ -9,6 +10,7 @@
     ]
   },
   {
+    "code": "DAWR210214",
     "name": "Dawson's Reef",
     "image": "reef2.jpg",
     "alt": "Dawson's Reef",
@@ -18,6 +20,7 @@
     ]
   },
   {
+    "code": "CLAR210214",
     "name": "Claire's REEF",
     "image": "reef3.jpg",
     "alt": "Claire's REEF",
@@ -27,6 +30,7 @@
     ]
   },
   {
+    "code": "NAGU210214",
     "name": "Nagua",
     "image": "nagua.jpg",
     "alt": "Nagua",

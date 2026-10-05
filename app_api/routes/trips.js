@@ -8,8 +8,8 @@ router
   .post(tripsController.tripsCreate);
 
 router
-  .route('/trips/:tripId')
-  .get(tripsController.tripsReadOne)
+  .route('/trips/:tripCode')
+  .get(tripsController.tripsFindByCode)
   .put(tripsController.tripsUpdateOne)
   .delete(tripsController.tripsDeleteOne);
 
