@@ -334,6 +334,9 @@ hr {
 	float: right;
 	border: 1px solid #2c9688;
 	margin-left: 15px;
+	width: 398px;
+	height: 287px;
+	object-fit: cover;
 }
 /** News **/
 #news {
