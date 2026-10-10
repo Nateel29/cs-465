@@ -37,5 +37,16 @@
     "description": [
       "Escape to Nagua, a hidden gem on the northern coast of the Dominican Republic. Pristine beaches, swaying palm trees, and crystal-clear Caribbean waters await you in this tranquil paradise away from the crowds. \n\nNagua is also famous for its great cuisine, celebrated for adding coconut to its dishes. Savor local favorites like the perfect rice cooked with coconut milk, stewed pigeon peas in coconut milk, and savory stewed fish simmered in coconut milk."
     ]
+  },
+  {
+    "code": "PLAT210215",
+    "name": "Platja d'Aro",
+    "image": "platja.jpg",
+    "alt": "Platja d'Aro",
+    "description": [
+      "This January, get ready to escape the icy snowstorms of the United States and trade them for the sun-kissed coastline of Catalonia's Costa Brava. Here, you'll find not only world-class food and a vibrant Mediterranean atmosphere, but you'll enjoy it all at a fraction of what it would cost in your city.",
+      "From crystal-clear coves and charming seaside towns to family-run restaurants serving unforgettable Catalan dishes, Costa Brava offers an experience that feels luxurious without the luxury price tag. Whether you're exploring the colorful streets of Calella de Palafrugell, relaxing on the beaches of Platja d'Aro, or enjoying the nightlife in Girona, every day feels like a postcard come to life.",
+      "If you're looking for a winter getaway that blends culture, nature, incredible cuisine, and unbeatable value, Costa Brava is the move. January never felt so warm."
+    ]
   }
 ]
