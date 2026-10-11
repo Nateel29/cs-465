@@ -1,5 +1,22 @@
 var Trip = require('../models/trip');
 
+// Build a trip payload from the request body
+function tripPayload(body) {
+  return {
+    code: body.code,
+    name: body.name,
+    length: body.length,
+    start: body.start,
+    resort: body.resort,
+    perPerson: body.perPerson,
+    image: body.image,
+    alt: body.alt,
+    description: Array.isArray(body.description)
+      ? body.description
+      : [body.description]
+  };
+}
+
 // GET /api/trips - list all trips
 var tripsList = async function (req, res) {
   try {
@@ -7,19 +24,6 @@ var tripsList = async function (req, res) {
     res.status(200).json(trips);
   } catch (err) {
     res.status(500).json({ message: 'Error retrieving trips', error: err.message });
-  }
-};
-
-// GET /api/trips/:tripId - single trip by MongoDB _id
-var tripsReadOne = async function (req, res) {
-  try {
-    var trip = await Trip.findById(req.params.tripId).exec();
-    if (!trip) {
-      return res.status(404).json({ message: 'Trip not found' });
-    }
-    res.status(200).json(trip);
-  } catch (err) {
-    res.status(500).json({ message: 'Error retrieving trip', error: err.message });
   }
 };
 
@@ -39,15 +43,7 @@ var tripsFindByCode = async function (req, res) {
 // POST /api/trips - create a new trip
 var tripsCreate = async function (req, res) {
   try {
-    var trip = await Trip.create({
-      code: req.body.code,
-      name: req.body.name,
-      image: req.body.image,
-      alt: req.body.alt,
-      description: Array.isArray(req.body.description)
-        ? req.body.description
-        : [req.body.description]
-    });
+    var trip = await Trip.create(tripPayload(req.body));
     res.status(201).json(trip);
   } catch (err) {
     res.status(400).json({ message: 'Validation failed', error: err.message });
@@ -59,16 +55,8 @@ var tripsUpdateOne = async function (req, res) {
   try {
     var trip = await Trip.findOneAndUpdate(
       { code: req.params.tripCode },
-      {
-        code: req.body.code,
-        name: req.body.name,
-        image: req.body.image,
-        alt: req.body.alt,
-        description: Array.isArray(req.body.description)
-          ? req.body.description
-          : [req.body.description]
-      },
-      { new: true, runValidators: true }
+      tripPayload(req.body),
+      { returnDocument: 'after', runValidators: true }
     ).exec();
     if (!trip) {
       return res.status(404).json({ message: 'Trip not found' });
@@ -94,7 +82,6 @@ var tripsDeleteOne = async function (req, res) {
 
 module.exports = {
   tripsList: tripsList,
-  tripsReadOne: tripsReadOne,
   tripsFindByCode: tripsFindByCode,
   tripsCreate: tripsCreate,
   tripsUpdateOne: tripsUpdateOne,

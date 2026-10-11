@@ -2,6 +2,10 @@
   {
     "code": "GALR210214",
     "name": "Gale Reef",
+    "length": "4 nights / 5 days",
+    "start": "2026-02-14T00:00:00Z",
+    "resort": "Emerald Bay, 3-stars",
+    "perPerson": 799.00,
     "image": "reef1.jpg",
     "alt": "Gale Reef",
     "description": [
@@ -12,6 +16,10 @@
   {
     "code": "DAWR210214",
     "name": "Dawson's Reef",
+    "length": "5 nights / 6 days",
+    "start": "2026-02-28T00:00:00Z",
+    "resort": "Castaway Cove, 4-stars",
+    "perPerson": 1299.00,
     "image": "reef2.jpg",
     "alt": "Dawson's Reef",
     "description": [
@@ -22,6 +30,10 @@
   {
     "code": "CLAR210214",
     "name": "Claire's REEF",
+    "length": "6 nights / 7 days",
+    "start": "2026-03-21T00:00:00Z",
+    "resort": "Sunseeker Surf, 4-stars",
+    "perPerson": 1199.00,
     "image": "reef3.jpg",
     "alt": "Claire's REEF",
     "description": [
@@ -32,6 +44,10 @@
   {
     "code": "NAGU210214",
     "name": "Nagua",
+    "length": "5 nights / 6 days",
+    "start": "2026-03-28T00:00:00Z",
+    "resort": "Coconut Palms Beach Resort, 4-stars",
+    "perPerson": 1499.00,
     "image": "nagua.jpg",
     "alt": "Nagua",
     "description": [
@@ -41,6 +57,10 @@
   {
     "code": "PLAT210215",
     "name": "Platja d'Aro",
+    "length": "7 nights / 8 days",
+    "start": "2026-04-11T00:00:00Z",
+    "resort": "Costa Brava Grand, 5-stars",
+    "perPerson": 2499.00,
     "image": "platja.jpg",
     "alt": "Platja d'Aro",
     "description": [

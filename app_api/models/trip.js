@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-// Trip schema with validation
+// Trip schema with validation - matches the Travlr Getaways wireframe fields
 var tripSchema = new mongoose.Schema({
   code: {
     type: String,
@@ -14,6 +14,25 @@ var tripSchema = new mongoose.Schema({
     required: [true, 'Trip name is required'],
     trim: true,
     minlength: [2, 'Trip name must be at least 2 characters']
+  },
+  length: {
+    type: String,
+    required: [true, 'Trip length is required'],
+    trim: true
+  },
+  start: {
+    type: Date,
+    required: [true, 'Trip start date is required']
+  },
+  resort: {
+    type: String,
+    required: [true, 'Resort name is required'],
+    trim: true
+  },
+  perPerson: {
+    type: Number,
+    required: [true, 'Per-person price is required'],
+    min: [0, 'Price cannot be negative']
   },
   image: {
     type: String,
